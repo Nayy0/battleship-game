@@ -44,8 +44,8 @@ public class Boat{
 	 * add 1 to this's nbTouches
 	 */
 	public void isTouched(){
-		if(!isSunk){
-			this.nbTouches++
+		if(!this.isSunk()){
+			this.nbTouches++;
 		}
 	}
 }
