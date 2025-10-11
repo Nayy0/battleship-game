@@ -38,7 +38,7 @@ public class Position{
 	 * 
 	 */
 	public void next(Direction d){
-		if(d==Direction.south){
+		if(d==Direction.north){
 			this.i=this.i-1;
 		}else if (d==Direction.south){
 			this.i=this.i+1;
