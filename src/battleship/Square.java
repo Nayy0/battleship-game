@@ -37,22 +37,46 @@ public class Square{
 	 * return this's isShoot
 	 * @return this's isShoot
 	 */
-	public boolean isShoot(){
+	public boolean getIsShoot(){
 		return this.isShoot;
 	}
 
 	/**
-	 * return a response depending on what this contains
+	 * return a response depending on what this contains,we consider shooting on a square already targeted is a missed shot
 	 * @return a response depending on what this contains
 	 */
-	public Response shoot(){}
+	public Response shoot(){
+		if((!this.hasBoat()) || this.isShoot){
+			return Response.miss;
+		}
+		this.shootBoat();
+		if(this.boat.isSunk()){
+			return Response.sunk;
+		}else{
+			return Response.hit;
+		}
+		
+	}
+	
 
 	/**
 	 * return true if this has a boat
 	 * @return true if this has a boat
 	 */
 	public boolean hasBoat(){
+		return this.boat!=null;
 	}
+	
+	/**
+	 * shoot on the boat of the square
+	 */
+	public void shootBoat(){
+		if(!this.isShoot){
+			this.boat.isTouched();
+		}
+		this.isShoot=true;
+	}
+	
 
 	
 }	

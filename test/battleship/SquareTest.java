@@ -1,4 +1,10 @@
-import battleship;
+package battleship;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import battleship.Boat;
+import battleship.Square;
+import battleship.Response;
+
 
 public class SquareTest{
 
@@ -6,30 +12,29 @@ public class SquareTest{
 	public void trueWhenHasABoat(){
 		Boat b=new Boat(3);
 		Square s=new Square(b);
-		assertsame(true,s.hasBoat);
+		assertTrue(s.hasBoat());
 	}
 	@Test
 	public void falseWhenHasNoBoat(){
-		Boat b=new Boat(3);
-                Square s=new Square(b);
-                assertsame(false,s.hasBoat);
+                Square s=new Square();
+                assertFalse(s.hasBoat());
 	}
 	@Test
 	public void respondMissWhenShootIsMissed(){
 		Boat b=new Boat(3);
                 Square s=new Square();
-		Response r1=s.shoot;
+		Response r1=s.shoot();
 		Response r2=Response.miss;
-		assertsame(r1,r2);
+		assertSame(r1,r2);
 	}
 
 	@Test
 	public void respondHitWhenShootIsHit(){
 		Boat b=new Boat(3);
                 Square s=new Square(b);
-                Response r1=s.shoot;
+                Response r1=s.shoot();
                 Response r2=Response.hit;
-                assertsame(r1,r2);
+                assertSame(r1,r2);
 	}
 
 	@Test 
@@ -38,9 +43,9 @@ public class SquareTest{
 		b.isTouched();
 		b.isTouched();
                 Square s=new Square(b);
-                Response r1=s.shoot;
+                Response r1=s.shoot();
                 Response r2=Response.sunk;
-                assertsame(r1,r2);
+                assertSame(r1,r2);
 	}
 
 	@Test
@@ -48,8 +53,36 @@ public class SquareTest{
 		Boat b=new Boat(3);
                 Square s=new Square(b);
 		s.shoot();
-		assertsame(1,b.getNbTouches());
+		assertSame(1,b.getNbTouches());
 		s.shoot();
-		assertsame(1,b.getNbTouches());
+		assertSame(1,b.getNbTouches());
 	}
+
+	@Test
+	public void sendSunkIfShootSunkTheBoat(){
+		Boat b=new Boat(2);
+		Square s1=new Square(b);
+		Square s2=new Square(b);
+		s1.shoot();
+		Response r=s2.shoot();
+		assertSame(r,Response.sunk);
+	}
+
+	@Test
+	public void sendMissIfShootTouchNothing(){
+		Square s=new Square();
+		Response r=s.shoot();
+		assertSame(r,Response.miss);
+	}
+
+	@Test
+	public void sendHitIfShootTouchBoat(){
+		Boat b=new Boat(3);
+                Square s=new Square(b);
+                Response r=s.shoot();
+		assertSame(r,Response.hit);
+	}
+
+
+
 }
