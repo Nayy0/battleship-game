@@ -46,7 +46,7 @@ public class Square{
 	 * @return a response depending on what this contains
 	 */
 	public Response shoot(){
-		if((!this.hasBoat()) || this.isShoot){
+		if((!this.hasBoat())){
 			return Response.miss;
 		}
 		this.shootBoat();

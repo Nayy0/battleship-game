@@ -69,6 +69,20 @@ public class SquareTest{
 	}
 
 	@Test
+	public void sendSunkWhenSunkAndAlreadyHaveBeenShoot(){
+		Boat b=new Boat(2);
+                Square s1=new Square(b);
+                Square s2=new Square(b);
+                s1.shoot();
+                s2.shoot();
+		Response r1=s1.shoot();
+		Response r2=s2.shoot();
+		assertSame(r1,Response.sunk);
+		assertSame(r2,Response.sunk);
+	}
+
+
+	@Test
 	public void sendMissIfShootTouchNothing(){
 		Square s=new Square();
 		Response r=s.shoot();
@@ -82,6 +96,15 @@ public class SquareTest{
                 Response r=s.shoot();
 		assertSame(r,Response.hit);
 	}
+	@Test
+	public void sendHitIfShootTouchBoatMultipleTimeButNotSunk(){
+                Boat b=new Boat(2);
+                Square s=new Square(b);
+		s.shoot();
+                Response r=s.shoot();
+                assertSame(r,Response.hit);
+	}
+
 
 
 
