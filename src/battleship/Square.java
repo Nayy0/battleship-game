@@ -42,7 +42,7 @@ public class Square{
 	}
 
 	/**
-	 * return a response depending on what this contains,we consider shooting on a square already targeted is a missed shot
+	 * return a response depending on what this contains,we consider shooting on a square already targeted send the same response as it wasn't targetted
 	 * @return a response depending on what this contains
 	 */
 	public Response shoot(){
