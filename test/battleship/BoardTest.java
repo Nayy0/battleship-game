@@ -9,15 +9,20 @@ import battleship.Square;
 public class BoardTest{
 	
 	@Test
-	public void gridIsGoodAtCreation(){
-		Board b=new Board(2,2);
-		Square[] t=new Square[2];
-		for(int i=0;i<t.length;i++){
-			Square s=new Square();
-			t[i]=s;
-		}
-		assertArrayEquals(b.getGrid()[0],t);
-		assertArrayEquals(b.getGrid()[1],t);
+	public void gridIsGoodAtCreation() {
+	    int length = 2;
+	    int width = 2;
+	    Board b = new Board(length, width);
+	    Square[][] grid = b.getGrid();
+	    assertEquals(length, grid.length);
+	    assertEquals(width, grid[0].length);
+	    for (int i = 0; i < length; i++) {
+        	for (int j = 0; j < width; j++) {
+        	    assertNotNull(grid[i][j]);
+        		}
+    		}
+
+	    assertNotSame(grid[0][0], grid[0][1]);
 	}
 
 	@Test
@@ -26,8 +31,8 @@ public class BoardTest{
 		Board b=new Board(2,2);
 		Position p=new Position(1,1);
 		b.placeBoat(p,Direction.west,b1);
-		Square s=b.getSquare(p);
-		assertSame(s.getBoat(),b1);
+		Square s=b.getSquare(new Position(1,1));
+		assertSame(b1,s.getBoat());
 	}
 
 	@Test
@@ -36,7 +41,7 @@ public class BoardTest{
 		Board b=new Board(2,2);
 		Position p1=new Position(0,1);
 		b.placeBoat(p1,Direction.west,b1);
-		Response r1=b.shootAt(p1);
+		Response r1=b.shootAt(new Position(0,1));
 		assertSame(Response.hit,r1);
 		Position p2=new Position(0,0);
 		Response r2=b.shootAt(p2);
@@ -61,7 +66,7 @@ public class BoardTest{
 		Position p1 =new Position(0,1);
 		Boat b1=new Boat(2);
 		b.placeBoat(p1,Direction.south,b1);
-		Square s1=b.getSquare(p1);
+		Square s1=b.getSquare(new Position(0,1));
 		Position p2=new Position(1,1);
 		Square s2=b.getSquare(p2);
 		assertSame(b1,s1.getBoat());

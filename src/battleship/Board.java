@@ -6,10 +6,6 @@ package battleship;
 public class Board{
 	/**the grid of the board*/
 	private Square[][] grid;
-	/**the length of the grid to avoid useless for later */
-	private int length;
-	/**the width of the grid to avoid useless for later */
-	private int width;
 	/**
 	 * Creats a grid of length and width given
 	 */
@@ -22,8 +18,6 @@ public class Board{
 			}
 		}
 		this.grid=t;
-		this.length=l;
-		this.width=w;
 	}
 	
 	/**
@@ -43,7 +37,7 @@ public class Board{
 	public Square getSquare(Position p) throws InvalidPositionException{
 		int i=p.getI();
 		int j=p.getJ();
-		if (i>=this.length || i<0 || j>=this.width || j<0){
+		if (i>=this.grid.length || i<0 || j>=this.grid[0].length || j<0){
 			throw new InvalidPositionException("position"+p+"is not valid");
 		}
 		return this.grid[i][j];
@@ -87,7 +81,7 @@ public class Board{
 	 * @throws InvalidPositionException if the position is out of the grid or the Square already has a boat
 	 */
 	public void placeBoat(Position p,Direction d, Boat b) throws InvalidPositionException {
-		for (int n=0;n<b.getLength();n++){
+		for (int n=0;n < b.getLength();n++){
 			this.placeBoatOnOneSquare(p,b);
 			p.next(d);
 		}
