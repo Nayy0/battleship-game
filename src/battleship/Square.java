@@ -58,7 +58,6 @@ public class Square{
 		
 	}
 	
-
 	/**
 	 * return true if this has a boat
 	 * @return true if this has a boat

@@ -1,7 +1,5 @@
 package battleship;
 
-import battleship.Square;
-import battleship.Boat;
 
 /**
  * Class fot board
@@ -41,23 +39,26 @@ public class Board{
 	 * return the response of a shoot at a position
 	 *@param p the position we shoot at
 	 *@return the response of a shoot at a given position
+	 * @throws InvalidPositionException
 	 */
-	public Response shootAt(Position p){}
+	public Response shootAt(Position p) throws InvalidPositionException {}
 	
 	/**
 	 * place boat on only one square
 	 * @param p the position we place a boat
 	 * @param b the boat we want to place
+	 * @throws InvalidPositionException
 	 */
-	public void placeAPiecetOfTheBoat(Position p,Boat b){}
+	private void placeBoatOnOneSquare(Position p,Boat b) throws InvalidPositionException {}
 
 	/**
 	 * place a boat in the grid at a position in a direction
 	 * @param p the position 
 	 * @param d the direction
 	 * @param b the boat we want to place
+	 * @throws InvalidPositionException
 	 */
-	public void placeBoat(Position p,Direction d, Boat b){}
+	public void placeBoat(Position p,Direction d, Boat b) throws InvalidPositionException {}
 
 	/**
 	 * return the string representation of the grid
