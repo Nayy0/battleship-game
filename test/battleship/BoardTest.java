@@ -16,22 +16,22 @@ public class BoardTest{
 			Square s=new Square();
 			t[i]=s;
 		}
-		assertArrayEquals(b.grid[0],t);
-		assertArrayEquals(b.grid[1],t);
+		assertArrayEquals(b.getGrid()[0],t);
+		assertArrayEquals(b.getGrid()[1],t);
 	}
 
 	@Test
-	public void getTheCorrectSquare(){
+	public void getTheCorrectSquare() throws InvalidPositionException{
 	        Boat b1=new Boat(1);
 		Board b=new Board(2,2);
 		Position p=new Position(1,1);
 		b.placeBoat(p,Direction.west,b1);
-		Square s=getSquare(p);
+		Square s=b.getSquare(p);
 		assertSame(s.getBoat(),b1);
 	}
 
 	@Test
-	public void getTheCorrectAnswerWhenShoot(){
+	public void getTheCorrectAnswerWhenShoot() throws InvalidPositionException{
 		Boat b1=new Boat(2);
 		Board b=new Board(2,2);
 		Position p1=new Position(0,1);
@@ -54,18 +54,12 @@ public class BoardTest{
 			       () -> b.shootAt(p));
 	}
 
-	@Test
-	public void placeBoatOnOneSquareIsOk(){
-		Board b=new Board(2,2);
-                Position p1 =new Position(0,1);
-                Boat b1=new Position(2);
-	}	
 
 	@Test
-	public void palceBoatIsCorrect(){
+	public void palceBoatIsCorrect() throws InvalidPositionException {
 		Board b=new Board(2,2);
 		Position p1 =new Position(0,1);
-		Boat b1=new Position(2);
+		Boat b1=new Boat(2);
 		b.placeBoat(p1,Direction.south,b1);
 		Square s1=b.getSquare(p1);
 		Position p2=new Position(1,1);
@@ -74,8 +68,8 @@ public class BoardTest{
 		assertSame(b1,s2.getBoat());
 		Position p3=new Position(0,0);
 		Position p4=new Position(1,0);
-		Square s3=new Position(p3);
-		Square s4=new Position(p4);
+		Square s3=b.getSquare(p3);
+		Square s4=b.getSquare(p4);
 		assertNull(s3.getBoat());
 		assertNull(s4.getBoat());
 	}
@@ -88,7 +82,7 @@ public class BoardTest{
 		b.placeBoat(p1,Direction.south,b1);
 		Position p2=new Position(0,0);
 		assertThrows(InvalidPositionException.class,
-				() -> b.placeBoat(p2,Direction.east,b1);
+				() -> b.placeBoat(p2,Direction.east,b1));
 	}
 
 		

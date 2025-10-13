@@ -48,5 +48,13 @@ public class Position{
 			this.j=this.j-1;
 		}
 	}
+
+	/**
+	 * return the representation of a position
+	 * @retur the representation of a position
+	 */
+	public String toString(){
+		return ("("+this.i+", "+this.j+")");
+	}
 }
 
