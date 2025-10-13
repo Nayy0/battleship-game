@@ -75,7 +75,21 @@ public class Square{
 		}
 		this.isShoot=true;
 	}
-	
+
+	/**
+	 * return the representation of a square
+	 * @return the representation of a square
+	 */
+	public String toString(){
+		if(!this.isShoot){
+			return ".";
+		}else if(this.shoot()==Response.miss){
+			return "~";
+		}else{
+			return "*";
+		}
+	}
+					
 
 	
 }	

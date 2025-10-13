@@ -87,11 +87,11 @@ public class Board{
 		}
 
 	}
-
+	
 	/**
-	 * return the string representation of the grid
-	 *@return the string representation of the grid
+	 * return the string representation of the board
+	 *@return the string representation of the board
 	 */
-//	public String toString(){}
+	public String toString(){}
 
 }
