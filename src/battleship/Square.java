@@ -47,6 +47,7 @@ public class Square{
 	 */
 	public Response shoot(){
 		if((!this.hasBoat())){
+			this.isShoot=true;
 			return Response.miss;
 		}
 		this.shootBoat();
@@ -69,7 +70,7 @@ public class Square{
 	/**
 	 * shoot on the boat of the square
 	 */
-	public void shootBoat(){
+	private void shootBoat(){
 		if(!this.isShoot){
 			this.boat.isTouched();
 		}
@@ -83,10 +84,10 @@ public class Square{
 	public String toString(){
 		if(!this.isShoot){
 			return ".";
-		}else if(this.shoot()==Response.miss){
-			return "~";
-		}else{
+		}else if(this.shoot()==Response.sunk || this.shoot()==Response.hit){
 			return "*";
+		}else{
+			return "~";
 		}
 	}
 					
