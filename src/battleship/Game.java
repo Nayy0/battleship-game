@@ -66,8 +66,8 @@ public class Game{
 		int x=this.board.getGrid().length -1;
 		int y=this.board.getGrid()[0].length -1;
 		int numberofhit=0;
-		while (this.isNotFinished()){
-			System.out.println(this.b);
+		while (!this.isFinished()){
+			System.out.println(this.board);
 			Position p=this.inputPosition(x,y);
 			Response r=this.board.shootAt(p);
 			System.out.println(r.name());
