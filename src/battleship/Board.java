@@ -92,6 +92,18 @@ public class Board{
 	 * return the string representation of the board
 	 *@return the string representation of the board
 	 */
-	public String toString(){}
+	public String toString() {
+	    StringBuilder sb = new StringBuilder();
+	    for (int i = 0; i < this.grid.length; i++) {
+	        for (int j = 0; j < this.grid[0].length; j++) {
+	            sb.append(this.grid[i][j].toString());
+	            if (j < this.grid[0].length - 1) {
+	                sb.append(" ");
+	            }
+	        }
+	        sb.append("\n");
+	    }
+	    return sb.toString();
+	}
 
 }
