@@ -16,20 +16,20 @@ Tout fonctionne conformement à la consigne de tp. Cependant pour l'affichage de
 # Commandes 
 ## Compilations
 * Compilation des classes de battleship: ```javac -sourcepath src src/battleship/*.java -d classes```
-* Compilation des classes de io: ```javac -sourcepath src src/io/*.java -d classes```
+```javac -sourcepath src src/io/*.java -d classes```
 
 ## Création du jar pour battleship main
-* Crétion du jar : ```jar cvfe battleship.jar battleship.BattleShipMain -C classes .```
+```jar cvfe battleship.jar battleship.BattleShipMain -C classes .```
 
 ## Execution
-* Excetution sans jar : ```java -classpath classes battleship.BattleShipMain```
-* Exectution avec le jar : ```java -jar battleship.jar```
+```java -classpath classes battleship.BattleShipMain```
+```java -jar battleship.jar```
 
 ## Compilation et exectution des tests
-* Compilation : ```javac -classpath junit-console.jar:classes test/battleship/*.java```
-* Execution : ```java -jar junit-console.jar -classpath test:classes -scan-classpath```
+```javac -classpath junit-console.jar:classes test/battleship/*.java```
+```java -jar junit-console.jar -classpath test:classes -scan-classpath```
 
 ## Génération de la documentation
-* ```javadoc -sourcepath src -subpackeges battleship io -d docs```
+```javadoc -sourcepath src -subpackeges battleship io -d docs```
 
 
