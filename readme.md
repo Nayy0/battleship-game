@@ -35,4 +35,4 @@ Tout fonctionne conformement à la consigne de tp. Cependant pour l'affichage de
 ```java -jar junit-console.jar -classpath test:classes -scan-classpath```
 
 ## Génération de la documentation
-* ```javadoc -sourcepath src -subpackeges battleship io -d docs```
+* ```javadoc -sourcepath src -subpackages battleship io -d docs```
